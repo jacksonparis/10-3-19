@@ -1,0 +1,30 @@
+---
+title: "beads"
+author: "Jackson Kehoe"
+date: "10/3/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(googlesheets4)
+library(stringr)
+sheets_deauth()
+
+
+```
+
+```{r}
+x <- read_sheet("1cgP-e6THVfiW5TJ95QhX3jkNxKvc8Sicp9k_BkSRd2I")
+new_x <- x %>%
+  filter(!is.na(red)) %>%
+  mutate(prop = red/white)
+
+ggplot(new_x, aes(x = prop)) + geom_histogram(bins = 18, binwidth = .2)
+
+```
+
