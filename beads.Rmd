@@ -18,13 +18,13 @@ sheets_deauth()
 
 ```
 
-```{r}
+```{r, warnings = FALSE}
 x <- read_sheet("1cgP-e6THVfiW5TJ95QhX3jkNxKvc8Sicp9k_BkSRd2I")
 new_x <- x %>%
   filter(!is.na(red)) %>%
   mutate(prop = red/(red + white))
 
-ggplot(new_x, aes(x = prop)) + geom_histogram(bins = 100, binwidth = .15) + labs(title = "Proportion of Red Balls in Samples of 25 Balls", x = "Proportion of Red Balls", y = "Count")
+ggplot(new_x, aes(x = prop)) + geom_histogram(bins = 100, binwidth = .06) + labs(title = "Proportion of Red Balls in Samples of 25 Balls", x = "Proportion of Red Balls", y = "Count")
 
 ```
 
